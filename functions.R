@@ -41,3 +41,10 @@ plot.inter.event.times <- function(inter.event.times, main = "Inter-event Time",
     as.numeric() %>% 
     hist(main = main, xlab = xlab, ylab = ylab, ...)
 }
+
+# Plot inter-quake times.
+plot.inter.quake.times <- function(inter.quake.times, main = "Inter-quake Time", xlab = "Time (in mins)", ylab = "# Quakes", ...) {
+  inter.quake.times %>% 
+    plot.inter.event.times(density = 10, col = "steel blue", breaks = 100, 
+                           main = main, xlab = xlab, ylab = ylab, ...)
+}
