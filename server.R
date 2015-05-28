@@ -6,4 +6,11 @@ function(input, output) {
     plot.earthquake.mag.vs.datetime()
   }, width = 960, height = 540)
   
+  output$plot.inter.earthquake.time.from.4.25.to.5.12 <- renderPlot({
+    plot.inter.earthquake.time.from.4.25.to.5.12()
+  }, width = 640, height = 360)
+  
+  output$plot.inter.earthquake.time.from.5.13 <- renderPlot({
+    plot.inter.earthquake.time.from.5.13()
+  }, width = 640, height = 360)
 }
