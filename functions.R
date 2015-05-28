@@ -34,3 +34,10 @@ inter.event.times <- function(event_times, units = "mins") {
 inter.earthquake.time <- function(earthquakes, units = "mins") {
   inter.event.times(earthquakes$date_time_posixct, units = units)
 }
+
+# Plots inter-event times.
+plot.inter.event.times <- function(inter.event.times, main = "Inter-event Time", xlab = "Time Unit", ylab = "# Events", ...) {
+  inter.event.times %>% 
+    as.numeric() %>% 
+    hist(main = main, xlab = xlab, ylab = ylab, ...)
+}
