@@ -13,3 +13,12 @@ plot.earthquake.mag.vs.datetime <- function() {
     facet_wrap(~date, ncol = 7) + 
     theme(axis.text.x = element_text(angle = 90, hjust = 1))
 }
+
+
+# Filter earthquakes by date.
+filter.earthquakes <- function(earthquakes, from = NA, to = NA) {
+  eqs <- earthquakes %>% arrange(date_time_posixct)
+  from <- ifelse(is.na(from), eqs$date_time_posixct[1], from)
+  to <- ifelse(is.na(to), eqs$date_time_posixct[nrow(eqs)], to)
+  eqs %>% filter(date_time_posixct >= from & eqs$date_time_posixct <= to)
+}
