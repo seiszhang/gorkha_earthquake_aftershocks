@@ -11,6 +11,13 @@ shinyUI(
                             plotOutput('plot')
                           )
                         )
+               ), 
+               tabPanel("Time Intervals", 
+                        fluidPage(
+                          titlePanel("Inter-Quake Times"),
+                          mainPanel(plotOutput('plot.inter.earthquake.time.from.4.25.to.5.12'),
+                                    plotOutput('plot.inter.earthquake.time.from.5.13'))
+                        )
                )
     )
   )
