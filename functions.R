@@ -22,3 +22,10 @@ filter.earthquakes <- function(earthquakes, from = NA, to = NA) {
   to <- ifelse(is.na(to), eqs$date_time_posixct[nrow(eqs)], to)
   eqs %>% filter(date_time_posixct >= from & eqs$date_time_posixct <= to)
 }
+
+# Calculates inter-event times
+inter.event.times <- function(event_times, units = "mins") {
+  date_time <- sort(event_times)
+  date_time_past <- c(date_time[1:length(date_time) - 1])
+  difftime(time1 = date_time[2:length(date_time)], time2 = date_time_past, units = units)
+}
