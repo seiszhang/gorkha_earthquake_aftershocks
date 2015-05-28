@@ -29,3 +29,8 @@ inter.event.times <- function(event_times, units = "mins") {
   date_time_past <- c(date_time[1:length(date_time) - 1])
   difftime(time1 = date_time[2:length(date_time)], time2 = date_time_past, units = units)
 }
+
+# Calculates inter-earthquake times.
+inter.earthquake.time <- function(earthquakes, units = "mins") {
+  inter.event.times(earthquakes$date_time_posixct, units = units)
+}
