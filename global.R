@@ -3,6 +3,10 @@ require('dplyr', quietly = TRUE, warn.conflicts = FALSE)
 require('futile.logger', quietly = TRUE, warn.conflicts = FALSE)
 
 
+# Source required functions
+source('functions.R')
+
+
 ################################################################################
 # Kimonolabs Data URL
 ################################################################################
