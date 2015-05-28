@@ -3,6 +3,10 @@ require('dplyr', quietly = TRUE, warn.conflicts = FALSE)
 require('futile.logger', quietly = TRUE, warn.conflicts = FALSE)
 
 
+# Source required functions
+source('functions.R')
+
+
 ################################################################################
 # Kimonolabs Data URL
 ################################################################################
@@ -74,3 +78,31 @@ earthquakes <- csv.url %>%
   transform(time_posixct = as.POSIXct(time, tz = "Asia/Katmandu", format = "%H:%M"), 
             date_time_posixct = as.POSIXct(date_time, tz = "Asia/Katmandu")) %>% 
   filter(date_time_posixct >= as.POSIXct(x = "2015/04/25 11:56", tz = "Asia/Katmandu"))
+
+
+################################################################################
+# Transformed Data
+################################################################################
+
+earthquakes.from.4.25.to.5.12 <- earthquakes %>% 
+  filter.earthquakes(from = "2015/04/25", 
+                     to = "2015/05/12")
+
+inter.earthquake.time.from.4.25.to.5.12 <- earthquakes.from.4.25.to.5.12 %>% 
+  inter.earthquake.time()
+
+plot.inter.earthquake.time.from.4.25.to.5.12 <- function() {
+  inter.earthquake.time.from.4.25.to.5.12 %>% 
+    plot.inter.quake.times(main = "Inter-quake time\nFrom 2015-04-25 to 2015-05-12")
+}
+
+earthquakes.from.5.13 <- earthquakes %>% 
+  filter.earthquakes(from = "2015/05/13")
+
+inter.earthquake.time.from.5.13 <- earthquakes.from.5.13 %>% 
+  inter.earthquake.time()
+
+plot.inter.earthquake.time.from.5.13 <- function() {
+  inter.earthquake.time.from.5.13 %>% 
+    plot.inter.quake.times(main = "Inter-quake Time\nFrom 2015-05-13")
+}
