@@ -71,5 +71,6 @@ earthquakes <- csv.url %>%
   get.data.from.url(on.success.get.data.from.url, on.error.get.data.from.url) %>% 
   csv.text.to.data.frame(on.success.csv.text.to.data.frame, on.error.csv.text.to.data.frame) %>% 
   mutate(date_time = sprintf("%s %s", date, time)) %>%
-  transform(date_time_posixlt = as.POSIXlt.character(date_time)) %>% 
-  filter(date_time_posixlt >= as.POSIXlt.character(x = "2015/04/25 11:56"))
+  transform(time_posixct = as.POSIXct(time, tz = "Asia/Katmandu", format = "%H:%M"), 
+            date_time_posixct = as.POSIXct(date_time, tz = "Asia/Katmandu")) %>% 
+  filter(date_time_posixct >= as.POSIXct(x = "2015/04/25 11:56", tz = "Asia/Katmandu"))

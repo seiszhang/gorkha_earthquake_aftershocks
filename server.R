@@ -1,14 +1,17 @@
 require('shiny', quietly = TRUE, warn.conflicts = FALSE)
 require('ggplot2', quietly = TRUE, warn.conflicts = FALSE)
+require('scales', quietly = TRUE, warn.conflicts = FALSE)
 
 function(input, output) {
   
   output$plot <- renderPlot({
     
     p <- ggplot(data = earthquakes, 
-                mapping = aes(x = time, y = mag, size = mag), 
+                mapping = aes(x = time_posixct, y = mag, size = mag), 
                 height = 960, width = 540) + 
       geom_point() + 
+      scale_x_datetime(breaks = date_breaks("3 hour"),
+                       labels = date_format("%H:%M")) + 
       facet_wrap(~date, ncol = 7) + 
       theme(axis.text.x = element_text(angle = 90, hjust = 1))
     
