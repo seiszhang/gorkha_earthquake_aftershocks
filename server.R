@@ -1,6 +1,4 @@
 require('shiny', quietly = TRUE, warn.conflicts = FALSE)
-require('ggplot2', quietly = TRUE, warn.conflicts = FALSE)
-require('scales', quietly = TRUE, warn.conflicts = FALSE)
 
 function(input, output) {
   

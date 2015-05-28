@@ -1,10 +1,17 @@
 require('shiny', quietly = TRUE, warn.conflicts = FALSE)
 
-fluidPage(
-  
-  titlePanel("Gorkha Earthquake & Aftershocks"),
-  
-  mainPanel(
-    plotOutput('plot')
+shinyUI(
+  fluidPage(
+    titlePanel("Gorkha Earthquake & Aftershocks"),
+    navbarPage("Visualizations: ", 
+               tabPanel("Timeline", 
+                        fluidPage(
+                          titlePanel("Timeline"),
+                          mainPanel(
+                            plotOutput('plot')
+                          )
+                        )
+               )
+    )
   )
 )
