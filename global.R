@@ -11,7 +11,7 @@ source('functions.R')
 # Kimonolabs Data URL
 ################################################################################
 
-csv.url <- "https://www.kimonolabs.com/api/csv/6m6p7z5y?apikey=JgN4UsyEGSZ0ogyTSDnJPCCObZ7lEbHa"
+csv.url <- "https://www.kimonolabs.com/api/csv/28crs8le?apikey=JgN4UsyEGSZ0ogyTSDnJPCCObZ7lEbHa"
 
 
 ################################################################################
