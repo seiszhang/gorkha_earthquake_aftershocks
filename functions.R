@@ -3,7 +3,7 @@ require('scales', quietly = TRUE, warn.conflicts = FALSE)
 
 
 # Plot all earthquakes in a continuous timeline.
-plot.earthquake.mag.in.timeline <- function() {
+plot.earthquake.mag.in.timeline <- function(earthquakes) {
   ggplot(data = earthquakes, 
          mapping = aes(x = date_time_posixct, y = mag, size = mag), 
          height = 960, width = 540) + 
@@ -14,7 +14,7 @@ plot.earthquake.mag.in.timeline <- function() {
 }
 
 
-plot.earthquake.mag.vs.datetime <- function() {
+plot.earthquake.mag.vs.datetime <- function(earthquakes) {
   ggplot(data = earthquakes, 
          mapping = aes(x = time_posixct, y = mag, size = mag), 
          height = 960, width = 540) + 
@@ -28,7 +28,7 @@ plot.earthquake.mag.vs.datetime <- function() {
 
 
 # Plot when earthquakes occured in time of day.
-plot.earthquake.mag.vs.time.of.day <- function() {
+plot.earthquake.mag.vs.time.of.day <- function(earthquakes) {
   ggplot(data = earthquakes, 
          mapping = aes(x = time_posixct, y = mag, size = mag), 
          height = 960, width = 540) + 
