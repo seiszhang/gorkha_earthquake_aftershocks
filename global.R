@@ -76,33 +76,34 @@ earthquakes <- csv.url %>%
   csv.text.to.data.frame(on.success.csv.text.to.data.frame, on.error.csv.text.to.data.frame) %>% 
   mutate(date_time = sprintf("%s %s", date, time)) %>%
   transform(time_posixct = as.POSIXct(time, tz = "Asia/Katmandu", format = "%H:%M"), 
-            date_time_posixct = as.POSIXct(date_time, tz = "Asia/Katmandu")) %>% 
-  filter(date_time_posixct >= as.POSIXct(x = "2015/04/25 11:56", tz = "Asia/Katmandu"))
+            date_time_posixct = as.POSIXct(date_time, tz = "Asia/Katmandu"))
 
 
 ################################################################################
 # Transformed Data
 ################################################################################
 
-earthquakes.from.4.25.to.5.12 <- earthquakes %>% 
-  filter.earthquakes(from = "2015/04/25", 
-                     to = "2015/05/12")
+earthquakes.from.2015.4.25 <- earthquakes %>% 
+  filter.earthquakes(from = "2015/04/25")
 
-inter.earthquake.time.from.4.25.to.5.12 <- earthquakes.from.4.25.to.5.12 %>% 
+earthquakes.from.2015.4.25.to.2015.5.12 <- earthquakes.from.2015.4.25 %>% 
+  filter.earthquakes(to = "2015/05/12")
+
+inter.earthquake.time.from.2015.4.25.to.2015.5.12 <- earthquakes.from.2015.4.25.to.2015.5.12 %>% 
   inter.earthquake.time()
 
-plot.inter.earthquake.time.from.4.25.to.5.12 <- function() {
-  inter.earthquake.time.from.4.25.to.5.12 %>% 
+plot.inter.earthquake.time.from.2015.4.25.to.2015.5.12 <- function() {
+  inter.earthquake.time.from.2015.4.25.to.2015.5.12 %>% 
     plot.inter.quake.times(main = "Inter-quake time\nFrom 2015-04-25 to 2015-05-12")
 }
 
-earthquakes.from.5.13 <- earthquakes %>% 
+earthquakes.from.2015.5.13 <- earthquakes %>% 
   filter.earthquakes(from = "2015/05/13")
 
-inter.earthquake.time.from.5.13 <- earthquakes.from.5.13 %>% 
+inter.earthquake.time.from.2015.5.13 <- earthquakes.from.2015.5.13 %>% 
   inter.earthquake.time()
 
-plot.inter.earthquake.time.from.5.13 <- function() {
-  inter.earthquake.time.from.5.13 %>% 
+plot.inter.earthquake.time.from.2015.5.13 <- function() {
+  inter.earthquake.time.from.2015.5.13 %>% 
     plot.inter.quake.times(main = "Inter-quake Time\nFrom 2015-05-13")
 }
