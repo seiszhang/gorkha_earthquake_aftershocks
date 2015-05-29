@@ -2,6 +2,18 @@ require('ggplot2', quietly = TRUE, warn.conflicts = FALSE)
 require('scales', quietly = TRUE, warn.conflicts = FALSE)
 
 
+# Plot all earthquakes in a continuous timeline.
+plot.earthquake.mag.in.timeline <- function() {
+  ggplot(data = earthquakes, 
+         mapping = aes(x = date_time_posixct, y = mag, size = mag), 
+         height = 960, width = 540) + 
+    geom_point() + 
+    scale_x_datetime("Date/Time") + 
+    scale_y_continuous("Magnitude") + 
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+}
+
+
 plot.earthquake.mag.vs.datetime <- function() {
   ggplot(data = earthquakes, 
          mapping = aes(x = time_posixct, y = mag, size = mag), 
