@@ -27,6 +27,19 @@ plot.earthquake.mag.vs.datetime <- function() {
 }
 
 
+# Plot when earthquakes occured in time of day.
+plot.earthquake.mag.vs.time.of.day <- function() {
+  ggplot(data = earthquakes, 
+         mapping = aes(x = time_posixct, y = mag, size = mag), 
+         height = 960, width = 540) + 
+    geom_point() + 
+    scale_x_datetime("Time of Day", breaks = date_breaks("2 hour"),
+                     labels = date_format("%H:%M")) + 
+    scale_y_continuous("Magnitude") + 
+    theme(axis.text.x = element_text(angle = 90, hjust = 1))
+}
+
+
 # Filter earthquakes by date.
 filter.earthquakes <- function(earthquakes, from = NA, to = NA) {
   eqs <- earthquakes %>% arrange(date_time_posixct)
