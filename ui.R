@@ -8,7 +8,10 @@ shinyUI(
                         fluidPage(
                           titlePanel("Timeline"),
                           mainPanel(
-                            plotOutput('plot')
+                            verticalLayout(
+                              plotOutput('plot.gorkha.earthquake.mag.in.timeline'),
+                              plotOutput('plot.gorkha.earthquakes.mag.vs.datetime')
+                            )
                           )
                         )
                ), 
@@ -22,7 +25,12 @@ shinyUI(
                tabPanel("All Past EQ", 
                         fluidPage(
                           titlePanel("All Past EQ"),
-                          mainPanel(plotOutput('plot.all.earthquakes'))
+                          mainPanel(
+                            verticalLayout(
+                              plotOutput('plot.all.earthquakes.mag.in.timeline'),
+                              plotOutput('plot.all.earthquakes.mag.vs.datetime')
+                            )
+                          )
                         )
                )
     )
