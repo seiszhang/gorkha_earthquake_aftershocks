@@ -2,6 +2,10 @@ require('shiny', quietly = TRUE, warn.conflicts = FALSE)
 
 function(input, output) {
   
+  output$plot.all.earthquakes <- renderPlot({
+    plot.earthquake.mag.in.timeline()
+  }, width = 960, height = 540)
+
   output$plot <- renderPlot({
     plot.earthquake.mag.vs.datetime()
   }, width = 960, height = 540)
