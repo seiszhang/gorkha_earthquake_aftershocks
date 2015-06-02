@@ -82,3 +82,8 @@ plot.nepal.quakes.on.map <- function(earthquakes) {
   points(x = earthquakes$long, y = earthquakes$lat, xlim = x.lim, ylim = y.lim, pch = ".", cex = earthquakes$mag ^ 0.5)
   box()
 }
+
+# Plot Gorkha EQ & aftershocks on a map.
+plot.gorkha.quakes.quakes.on.map <- function() {
+  plot.nepal.quakes.on.map(earthquakes.from.2015.4.25)
+}
