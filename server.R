@@ -25,4 +25,8 @@ function(input, output) {
   output$plot.inter.earthquake.time.from.2015.5.13 <- renderPlot({
     plot.inter.earthquake.time.from.2015.5.13()
   }, width = 640, height = 360)
+  
+  output$plot.gorkha.quakes.quakes.on.map <- renderPlot({
+    plot.gorkha.quakes.quakes.on.map()
+  }, width = 640, height = 360)
 }
