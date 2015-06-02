@@ -1,5 +1,7 @@
 require('ggplot2', quietly = TRUE, warn.conflicts = FALSE)
 require('scales', quietly = TRUE, warn.conflicts = FALSE)
+require('maps', quietly = TRUE, warn.conflicts = FALSE)
+require('mapdata', quietly = TRUE, warn.conflicts = FALSE)
 
 
 # Plot all earthquakes in a continuous timeline.
