@@ -26,9 +26,9 @@ shinyUI(
                                                inline = TRUE))
                         )
                ), 
-               tabPanel("All Past EQ", 
+               tabPanel("All EQ in 2015", 
                         fluidPage(
-                          titlePanel("All Past EQ"),
+                          titlePanel("All EQ in 2015"),
                           mainPanel(
                             verticalLayout(
                               plotOutput('plot.all.earthquakes.mag.in.timeline', 
