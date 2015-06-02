@@ -17,6 +17,16 @@ shinyUI(
                           )
                         )
                ), 
+               tabPanel("Gorkha EQ Map",
+                        fluidPage(titlePanel("Basic Map"), 
+                                  mainPanel(
+                                    verticalLayout(
+                                      plotOutput('plot.gorkha.quakes.quakes.on.map', 
+                                                 inline = TRUE)
+                                    )
+                                  )
+                        )
+               ), 
                tabPanel("Time Intervals", 
                         fluidPage(
                           titlePanel("Inter-Quake Times"),

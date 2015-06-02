@@ -73,3 +73,17 @@ plot.inter.quake.times <- function(inter.quake.times, main = "Inter-quake Time",
     plot.inter.event.times(density = 10, col = "steel blue", breaks = 100, 
                            main = main, xlab = xlab, ylab = ylab, ...)
 }
+
+# Plot quakes in Nepal on a basic map.
+plot.nepal.quakes.on.map <- function(earthquakes) {
+  x.lim <- c(80.05, 88.2)
+  y.lim <- c(26.35, 30.45)
+  map("worldHires","Nepal", xlim = x.lim, ylim = y.lim, col="gray90", fill=TRUE)
+  points(x = earthquakes$long, y = earthquakes$lat, xlim = x.lim, ylim = y.lim, pch = ".", cex = earthquakes$mag ^ 0.5)
+  box()
+}
+
+# Plot Gorkha EQ & aftershocks on a map.
+plot.gorkha.quakes.quakes.on.map <- function() {
+  plot.nepal.quakes.on.map(earthquakes.from.2015.4.25)
+}
