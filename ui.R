@@ -9,8 +9,10 @@ shinyUI(
                           titlePanel("Timeline"),
                           mainPanel(
                             verticalLayout(
-                              plotOutput('plot.gorkha.earthquake.mag.in.timeline'),
-                              plotOutput('plot.gorkha.earthquakes.mag.vs.datetime')
+                              plotOutput('plot.gorkha.earthquake.mag.in.timeline', 
+                                         inline = TRUE),
+                              plotOutput('plot.gorkha.earthquakes.mag.vs.datetime', 
+                                         inline = TRUE)
                             )
                           )
                         )
@@ -18,8 +20,10 @@ shinyUI(
                tabPanel("Time Intervals", 
                         fluidPage(
                           titlePanel("Inter-Quake Times"),
-                          mainPanel(plotOutput('plot.inter.earthquake.time.from.2015.4.25.to.2015.5.12'),
-                                    plotOutput('plot.inter.earthquake.time.from.2015.5.13'))
+                          mainPanel(plotOutput('plot.inter.earthquake.time.from.2015.4.25.to.2015.5.12', 
+                                               inline = TRUE),
+                                    plotOutput('plot.inter.earthquake.time.from.2015.5.13', 
+                                               inline = TRUE))
                         )
                ), 
                tabPanel("All Past EQ", 
@@ -27,8 +31,10 @@ shinyUI(
                           titlePanel("All Past EQ"),
                           mainPanel(
                             verticalLayout(
-                              plotOutput('plot.all.earthquakes.mag.in.timeline'),
-                              plotOutput('plot.all.earthquakes.mag.vs.datetime')
+                              plotOutput('plot.all.earthquakes.mag.in.timeline', 
+                                         inline = TRUE),
+                              plotOutput('plot.all.earthquakes.mag.vs.datetime', 
+                                         inline = TRUE)
                             )
                           )
                         )
