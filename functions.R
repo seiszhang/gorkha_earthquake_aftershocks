@@ -117,3 +117,8 @@ leaflet.plot.nepal.quakes.on.map <- function(earthquakes) {
 plot.gorkha.quakes.quakes.on.map <- function() {
   plot.nepal.quakes.on.map(earthquakes.from.2015.4.25)
 }
+
+# Plot Gorkha EQ & aftershocks on a leaflet map.
+leaflet.plot.gorkha.quakes.quakes.on.map <- function() {
+  leaflet.plot.nepal.quakes.on.map(earthquakes.from.2015.4.25)
+}
