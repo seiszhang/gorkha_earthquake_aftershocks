@@ -2,6 +2,7 @@ require('ggplot2', quietly = TRUE, warn.conflicts = FALSE)
 require('scales', quietly = TRUE, warn.conflicts = FALSE)
 require('maps', quietly = TRUE, warn.conflicts = FALSE)
 require('mapdata', quietly = TRUE, warn.conflicts = FALSE)
+require('leaflet', quietly = TRUE, warn.conflicts = FALSE)
 
 
 # Plot all earthquakes in a continuous timeline.
@@ -85,7 +86,39 @@ plot.nepal.quakes.on.map <- function(earthquakes) {
   box()
 }
 
+# Plot quakes in Nepal on a leaflet map.
+leaflet.plot.nepal.quakes.on.map <- function(earthquakes) {
+  eq <- earthquakes %>% 
+    mutate(mag_color = mag %>% as.integer() %>% as.factor())
+  mag_colors <- eq %>% 
+    with(colorFactor(heat.colors(mag %>% max() %>% ceiling() - 
+                               mag %>% min() %>% floor()) %>% 
+                       rev(), 
+                     mag_color))
+  eq %>% 
+    leaflet() %>% 
+    addProviderTiles("MapQuestOpen.Aerial", 
+                     options = providerTileOptions(opacity = 1.0)) %>%
+    addProviderTiles("Stamen.TonerLines",
+                     options = providerTileOptions(opacity = 1.0)) %>%
+    addProviderTiles("Stamen.TonerLabels") %>% 
+    addCircles(lng = ~long, 
+               lat = ~lat, 
+               color = ~mag_colors(mag_color), 
+               radius = ~2 * mag ^ 4, 
+               opacity = 0.8, 
+               fillOpacity = 0.5, 
+               popup = ~as.character(mag)) %>% 
+    addLegend(position = "topright", pal = mag_colors, values = ~mag_color, 
+              title = "Magnitude")
+}
+
 # Plot Gorkha EQ & aftershocks on a map.
 plot.gorkha.quakes.quakes.on.map <- function() {
   plot.nepal.quakes.on.map(earthquakes.from.2015.4.25)
+}
+
+# Plot Gorkha EQ & aftershocks on a leaflet map.
+leaflet.plot.gorkha.quakes.quakes.on.map <- function() {
+  leaflet.plot.nepal.quakes.on.map(earthquakes.from.2015.4.25)
 }

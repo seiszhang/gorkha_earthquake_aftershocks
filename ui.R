@@ -21,8 +21,8 @@ shinyUI(
                         fluidPage(titlePanel("Basic Map"), 
                                   mainPanel(
                                     verticalLayout(
-                                      plotOutput('plot.gorkha.quakes.quakes.on.map', 
-                                                 inline = TRUE)
+                                      leafletOutput('leaflet.plot.gorkha.quakes.quakes.on.map', 
+                                                    width = "960", height = "540")
                                     )
                                   )
                         )

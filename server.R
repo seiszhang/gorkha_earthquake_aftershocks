@@ -5,7 +5,7 @@ function(input, output) {
   output$plot.all.earthquakes.mag.in.timeline <- renderPlot({
     plot.earthquake.mag.in.timeline(earthquakes)
   }, width = 960, height = 540)
-
+  
   output$plot.all.earthquakes.mag.vs.datetime <- renderPlot({
     plot.earthquake.mag.vs.datetime(earthquakes)
   }, width = 960, height = 540)
@@ -26,7 +26,10 @@ function(input, output) {
     plot.inter.earthquake.time.from.2015.5.13()
   }, width = 640, height = 360)
   
-  output$plot.gorkha.quakes.quakes.on.map <- renderPlot({
-    plot.gorkha.quakes.quakes.on.map()
-  }, width = 640, height = 360)
+  # output$plot.gorkha.quakes.quakes.on.map <- renderPlot({
+  #   plot.gorkha.quakes.quakes.on.map()
+  # }, width = 640, height = 360)
+  
+  output$leaflet.plot.gorkha.quakes.quakes.on.map <- 
+    renderLeaflet(leaflet.plot.gorkha.quakes.quakes.on.map())
 }
