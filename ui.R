@@ -27,6 +27,23 @@ shinyUI(
                                   )
                         )
                ), 
+               tabPanel("Animated Map",
+                        fluidPage(titlePanel("Animated Map"), 
+                                  mainPanel(
+                                    sidebarLayout(
+                                      sidebarPanel(
+                                        HTML("From: 2015-04-25<br />To: "),
+                                        uiOutput('ui.animate.map.day.slider'), 
+                                        textOutput('animate.map.date.to')
+                                      ),
+                                      mainPanel(
+                                        plotOutput('animate.map.plot', 
+                                                      width = "853", height = "480")
+                                      )
+                                    )
+                                  )
+                        )
+               ), 
                tabPanel("Time Intervals", 
                         fluidPage(
                           titlePanel("Inter-Quake Times"),
